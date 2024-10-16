@@ -18,6 +18,55 @@ const myLibrary = [ {
         pages: 100,
         status: "has been read"
     },
+
+    {
+        title: "Lincoln is da legend",
+        author: "Lincoln",
+        pages: 100,
+        status: "has been read"
+    },
+
+    {
+        title: "Lincoln is da legend",
+        author: "Lincoln",
+        pages: 100,
+        status: "has been read"
+    },
+
+    {
+        title: "Lincoln is da legend",
+        author: "Lincoln",
+        pages: 100,
+        status: "has been read"
+    },
+
+    {
+        title: "Lincoln is da legend",
+        author: "Lincoln",
+        pages: 100,
+        status: "has been read"
+    },
+
+    {
+        title: "Lincoln is da legend",
+        author: "Lincoln",
+        pages: 100,
+        status: "has been read"
+    },
+
+    {
+        title: "Lincoln is da legend",
+        author: "Lincoln",
+        pages: 100,
+        status: "has been read"
+    },
+
+    {
+        title: "Lincoln is da legend",
+        author: "Lincoln",
+        pages: 100,
+        status: "has been read"
+    },
 ]
 
 function Book(title, author, pages, readStatus) {
@@ -62,6 +111,7 @@ for ( let i=0; i < myLibrary.length; i++ ) {
     //put info onto the cards
     const bookTitle = card.appendChild(document.createElement("p"))
     bookTitle.textContent = `Book title: ${myLibrary[i].title}`
+    bookTitle.style.color = "#b45309"
 
     const bookAuthor = card.appendChild(document.createElement("p"))
     bookAuthor.textContent = `Author: ${myLibrary[i].author}`
@@ -71,5 +121,6 @@ for ( let i=0; i < myLibrary.length; i++ ) {
 
     const bookStatus = card.appendChild(document.createElement("p"))
     bookStatus.textContent = `Status: ${myLibrary[i].status}`
+    bookStatus.style.color = "green"
 }
 
