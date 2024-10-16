@@ -1,0 +1,14 @@
+:root {
+    font-size: 16px;
+}
+
+.card {
+    width: 20vw;
+    height: 25vh;
+    border: 1px solid black;
+}
+
+p {
+    margin: 3px;
+    font-size: 1.1em;
+}
