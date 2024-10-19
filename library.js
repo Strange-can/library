@@ -51,7 +51,8 @@ const formAuthor = document.getElementById("author")
 const formPages = document.getElementById("pages")
 
 const confirmButton = document.getElementById("confirm") 
-confirmButton.addEventListener( "click", function formSubmit (event) {
+//function to "submit" the form
+function formSubmit (event) {
     event.preventDefault()
     if ( formTitle.value && formAuthor.value && Number(formPages.value) > 0) {
     title = formTitle.value
@@ -69,13 +70,15 @@ confirmButton.addEventListener( "click", function formSubmit (event) {
     else {
         msg.textContent = 'Please fill in all fields'
     }
-})
+}
+confirmButton.addEventListener( "click", formSubmit )
 
-/*form.addEventListener( "keypress", () => {
-    if (e.key === "Enter") {
-    formSubmit()
+//Prevent "Enter" keypress to exit the form, users can press "Enter" to "submit" the form
+form.addEventListener( "keypress", (event) => {
+    if (event.key === "Enter") {
+    formSubmit(event)
     }
-})*/
+})
 
 function displayCards() {
     const cardContainer = document.querySelector(".card-container")
@@ -98,11 +101,44 @@ for ( let i=0; i < myLibrary.length; i++ ) {
 
     const bookStatus = card.appendChild(document.createElement("p"))
     bookStatus.textContent = `Status: ${myLibrary[i].status}`
-    bookStatus.style.color = "green"
+        if (bookStatus.textContent === 'Status: reading') {
+             bookStatus.style.color = "blue"
+        }
+        else {
+             bookStatus.style.color = "green"
+        }
 
     const statusButton = card.appendChild(document.createElement("button"))
-    statusButton.textContent = "Mark as completed"
-}
+    statusButton.classList.add("status-button")
+    statusButton.classList.add(`status-button${i}`)
+        if ( myLibrary[i].status === 'completed' ) {
+            statusButton.textContent = 'Mark as reading'
+        }
+        else {
+            statusButton.textContent = 'Mark as completed'
+        }
+    statusButton.addEventListener("click", () => {
+        const classStr = statusButton.classList.toString()
+        const cardNumber = Number(classStr.charAt(classStr.length - 1))
+        if (statusButton.textContent === 'Mark as completed') { 
+            myLibrary[cardNumber].status = 'completed'
+            displayCards() 
+        }
+        else {
+            myLibrary[cardNumber].status = 'reading'
+            displayCards()
+        }
+    })
+
+    const deleteButton = card.appendChild(document.createElement("button"))
+    deleteButton.textContent = 'Delete'
+    deleteButton.classList.add("delete-button")
+    deleteButton.addEventListener("click", () => {
+        const classStr = statusButton.classList.toString()
+        const cardNumber = Number(classStr.charAt(classStr.length - 1))
+        myLibrary.splice(cardNumber, 1)
+        displayCards()
+})}
 }
 
 displayCards()
