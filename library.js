@@ -2,7 +2,7 @@ const myLibrary = [ {
     title: "Lincoln is da legend",
     author: "Lincoln",
     pages: 100,
-    status: "has been read"
+    status: "completed"
     },
 ]
 
@@ -66,7 +66,7 @@ confirmButton.addEventListener( "click", (event) => {
     pages = ''
     }
     else if ( formTitle.value && formAuthor.value && !(Number(formPages.value) > 0) ) {
-        msg.textContent = `Did you pull that book outta your ass? Ain\'t no book having ${Number(formPages.value)} pages`
+        msg.textContent = `Did you pull that book outta your ass? Ain\'t no book that has ${Number(formPages.value)} pages`
     }
     else {
         msg.textContent = 'Please fill in all fields'
@@ -74,10 +74,10 @@ confirmButton.addEventListener( "click", (event) => {
 })
 
 function displayCards() {
-    //cardContainer.textContent = ''
+    const cardContainer = document.querySelector(".card-container")
+    cardContainer.textContent = ''
 for ( let i=0; i < myLibrary.length; i++ ) {
     // make the cards 
-    const cardContainer = document.querySelector(".card-container")
     const card = cardContainer.appendChild(document.createElement("div"))
     card.classList.add("card")
 
