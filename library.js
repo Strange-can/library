@@ -1,6 +1,6 @@
 const myLibrary = [ {
-    title: "Lincoln is da legend",
-    author: "Lincoln",
+    title: "Strange_Can is da legend",
+    author: "The World",
     pages: 100,
     status: "completed"
     },
@@ -61,9 +61,6 @@ confirmButton.addEventListener( "click", (event) => {
     dialog.close()
     addBookToLibrary()
     displayCards()
-    title = ''
-    author = ''
-    pages = ''
     }
     else if ( formTitle.value && formAuthor.value && !(Number(formPages.value) > 0) ) {
         msg.textContent = `Did you pull that book outta your ass? Ain\'t no book that has ${Number(formPages.value)} pages`
@@ -97,3 +94,5 @@ for ( let i=0; i < myLibrary.length; i++ ) {
     bookStatus.style.color = "green"
 }
 }
+
+displayCards()
