@@ -39,6 +39,7 @@ cancelButton.addEventListener( "click", () => {
     dialog.close()
 })
 
+//form validation
 const form = document.querySelector("form")
 
 const msg = document.getElementById("kind-msg")
@@ -50,7 +51,7 @@ const formAuthor = document.getElementById("author")
 const formPages = document.getElementById("pages")
 
 const confirmButton = document.getElementById("confirm") 
-confirmButton.addEventListener( "click", (event) => {
+confirmButton.addEventListener( "click", function formSubmit (event) {
     event.preventDefault()
     if ( formTitle.value && formAuthor.value && Number(formPages.value) > 0) {
     title = formTitle.value
@@ -69,6 +70,12 @@ confirmButton.addEventListener( "click", (event) => {
         msg.textContent = 'Please fill in all fields'
     }
 })
+
+/*form.addEventListener( "keypress", () => {
+    if (e.key === "Enter") {
+    formSubmit()
+    }
+})*/
 
 function displayCards() {
     const cardContainer = document.querySelector(".card-container")
@@ -92,6 +99,9 @@ for ( let i=0; i < myLibrary.length; i++ ) {
     const bookStatus = card.appendChild(document.createElement("p"))
     bookStatus.textContent = `Status: ${myLibrary[i].status}`
     bookStatus.style.color = "green"
+
+    const statusButton = card.appendChild(document.createElement("button"))
+    statusButton.textContent = "Mark as completed"
 }
 }
 
